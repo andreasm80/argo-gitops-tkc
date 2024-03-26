@@ -4,7 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "6"
     pv.kubernetes.io/provisioned-by: cluster.local/nfs-subdir-external-provisioner
-  name: pvc-7903d655-142b-42d6-832c-c1769a16b2fb
+  name: pvc-788803e1-6242-4845-b19f-9cbdb08fe293
 spec:
   accessModes:
   - ReadWriteMany
@@ -16,7 +16,7 @@ spec:
     name: tanzu-pv-claim
     namespace: avi-system
   nfs:
-    path: /mnt/nfs/tkc-clusters/default-nfs-ako-secrt-claim-pvc-7903d655-142b-42d6-832c-c1769a16b2fb
+    path: /mnt/nfs/tkc-clusters/avi-system-nfs-ako-secrt-claim-pvc-788803e1-6242-4845-b19f-9cbdb08fe293
     server: 192.168.100.99
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-client
@@ -27,7 +27,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "7"
-  name: tanzu-pv-claim
+  name: nfs-ako-secrt-claim
   namespace: avi-system
 spec:
   storageClassName: nfs-client

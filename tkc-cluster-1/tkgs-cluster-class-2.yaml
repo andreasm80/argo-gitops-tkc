@@ -2,7 +2,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: tkc-cluster-2
+  name: tkc-cluster-1
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   namespace: ns-1

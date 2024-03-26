@@ -3,7 +3,7 @@ kind: AntreaConfig
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
-  name: tkc-cluster-2-antrea-package
+  name: tkc-cluster-1-antrea-package
   namespace: ns-1
 spec:
   antrea:

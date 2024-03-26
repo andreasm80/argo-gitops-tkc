@@ -13,7 +13,7 @@ spec:
   claimRef:
     apiVersion: v1
     kind: PersistentVolumeClaim
-    name: tanzu-pv-claim
+    name: nfs-ako-secrt-claim
     namespace: avi-system
   nfs:
     path: /mnt/nfs/tkc-clusters/avi-system-nfs-ako-secrt-claim-pvc-788803e1-6242-4845-b19f-9cbdb08fe293
@@ -27,7 +27,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "7"
-  name: tanzu-pv-claim
+  name: nfs-ako-secrt-claim
   namespace: avi-system
 spec:
   storageClassName: nfs-client

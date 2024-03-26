@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
+    repoURL: 'https://github.com/andreasm80/argo-gitops-tkc.git'
     path: tkc-cluster-1
     targetRevision: HEAD
   destination:

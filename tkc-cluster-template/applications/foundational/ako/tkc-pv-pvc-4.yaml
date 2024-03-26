@@ -16,8 +16,8 @@ spec:
     name: tanzu-pv-claim
     namespace: avi-system
   nfs:
-    path: /mnt/Pool1/Kubernetes/tanzu/nfs-storage-tanzu-pv-claim-pvc-95c59675-7085-45cb-8a84-0364e7a7fe70
-    server: 172.18.3.23
+    path: /mnt/nfs/tkc-clusters/nfs-storage-tanzu-pv-claim-pvc-95c59675-7085-45cb-8a84-0364e7a7fe70
+    server: 192.168.100.99
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-client
   volumeMode: Filesystem

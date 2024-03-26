@@ -8,6 +8,12 @@ read cluster_name
 echo "What is the vSphere Namespace Name?"
 read vsphere_namespace
 
+# Prompt for cluster network CIDR blocks
+echo "Enter the CIDR block for services (e.g., \"10.10.0.0/16\"):"
+read services_cidr
+echo "Enter the CIDR block for pods (e.g., \"10.20.0.0/16\"):"
+read pods_cidr
+
 # New prompts for AKO configuration
 echo "What is the path to your NSX Tier-1 router for AKO configuration - (full path eg \"/infra/tier-1s/tier-x\")"
 read nsx_t1_router
@@ -101,6 +107,8 @@ fi
 if [ -f "$tkgs_cluster_class_path" ]; then
     perform_sed "s/name: tkc-cluster-1/name: ${cluster_name}/" "$tkgs_cluster_class_path"
     perform_sed "s/namespace: ns-1/namespace: ${vsphere_namespace}/" "$tkgs_cluster_class_path"
+    perform_sed "s|cidrBlocks: \[\"10.10.0.0/16\"\]|cidrBlocks: \[\"${services_cidr}\"\]|" "$tkgs_cluster_class_path"
+    perform_sed "s|cidrBlocks: \[\"10.20.0.0/16\"\]|cidrBlocks: \[\"${pods_cidr}\"\]|" "$tkgs_cluster_class_path"
     echo "Updated tkgs-cluster-class-2.yaml"
 fi
 

@@ -5,9 +5,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
   labels:
-    app.kubernetes.io/name: argocd-tkc-cluster-4-base-app-configmap
+    app.kubernetes.io/name: argocd-tkc-cluster-1-base-app-configmap
     app.kubernetes.io/part-of: argocd
-  name: argocd-tkc-cluster-4-base-app-configmap
+  name: argocd-tkc-cluster-1-base-app-configmap
 data:
   argocd-tkc-addons.template.yaml: |
     apiVersion: argoproj.io/v1alpha1
@@ -17,8 +17,8 @@ data:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
-        path: tkc-cluster-4/applications/gatekeeper-tkc-cluster-4
+        repoURL: 'https://github.com/andreasm80/argo-gitops-tkc.git'
+        path: tkc-cluster-1/applications/gatekeeper-tkc-cluster-1
         targetRevision: HEAD       
       destination:
         server: ${CLUSTER_IP}
@@ -39,9 +39,9 @@ data:
         helm:
           parameters:
           - name: 'nfs.server'
-            value: '172.18.3.23'
+            value: '192.168.100.99'
           - name: 'nfs.path'
-            value: '/mnt/Pool1/Kubernetes/tanzu'
+            value: '/mnt/nfs/tkc-clusters'
           - name: 'storageClass.reclaimPolicy'
             value: 'Retain'
           values: |
@@ -99,7 +99,7 @@ data:
               apiServerPort: 8080
               deleteConfig: 'false'
               disableStaticRouteSync: 'false'
-              clusterName: 'tkc-cluster-4'
+              clusterName: 'tkc-cluster-1'
               cniPlugin: 'antrea'
               enableEVH: false
               layer7Only: true
@@ -115,13 +115,13 @@ data:
             NetworkSettings:
               nodeNetworkList: []
               enableRHI: false
-              nsxtT1LR: '/infra/tier-1s/tier-1'
+              nsxtT1LR: '/infra/tier-1s/the-tier-1'
               bgpPeerLabels: []
               vipNetworkList:
                 - networkName: 'vip-l7'
-                  cidr: '10.141.1.0/24'
+                  cidr: '192.168.121.0/24'
             L7Settings:
-              defaultIngController: 'false'
+              defaultIngController: 'true'
               noPGForSNI: false
               serviceType: NodePortLocal
               shardVSSize: SMALL
@@ -135,8 +135,8 @@ data:
             ControllerSettings:
               serviceEngineGroupName: domain-c1006:5de34cdc-8b14-46a3-b1c9-b627d574cdf0
               controllerVersion: '22.1.5'
-              cloudName: 'nsx-t'
-              controllerHost: '172.18.5.51'
+              cloudName: 'nsx-m01'
+              controllerHost: '192.168.100.50'
               tenantName: admin
 
             nodePortSelector:
@@ -204,8 +204,8 @@ data:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
-        path: tkc-cluster-4/applications/foundational/ako/
+        repoURL: 'https://github.com/andreasm80/argo-gitops-tkc.git'
+        path: tkc-cluster-1/applications/foundational/ako/
         targetRevision: HEAD
       destination:
         server: ${CLUSTER_IP}

@@ -17,7 +17,7 @@ data:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
+        repoURL: 'https://github.com/andreasm80/argo-gitops-tkc.git'
         path: tkc-cluster-1/applications/gatekeeper-tkc-1
         targetRevision: HEAD       
       destination:
@@ -39,9 +39,9 @@ data:
         helm:
           parameters:
           - name: 'nfs.server'
-            value: '172.18.3.23'
+            value: '192.168.100.99'
           - name: 'nfs.path'
-            value: '/mnt/Pool1/Kubernetes/tanzu'
+            value: '/mnt/nfs/tkc-clusters'
           - name: 'storageClass.reclaimPolicy'
             value: 'Retain'
           values: |
@@ -204,7 +204,7 @@ data:
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/andreasm80/argo-gitops-ns-1.git'
+        repoURL: 'https://github.com/andreasm80/argo-gitops-tkc.git'
         path: tkc-cluster-1/applications/foundational/ako/
         targetRevision: HEAD
       destination:
